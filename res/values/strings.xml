@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, PuzzleSomethingSettingActivity!</string>
+    <string name="app_name">PuzzleSomethingSetting</string>
+    <string name="settingButton">setting</string>
+    <string name="puzzleSomethingTitle">Welcome to puzzle something!!!</string>
+    <string name="cancelButton">cancel</string>
+    <string name="soundRadioButtonOn">on</string>
+    <string name="soundRadionButtonOff">off</string>
+    <string name="volumeText">volume</string>
+    <string name="closeButton">X</string>
+    <color name="white">#FFFFFF</color>
+    <drawable name="popupWindowCover">#FFFFFF</drawable>
+    <color name="colorRed">#780000</color>
+
+</resources>

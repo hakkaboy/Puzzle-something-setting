@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/closePopupWindow"
+        android:layout_width="46dp"
+        android:layout_height="wrap_content"
+        android:text="@string/closeButton" />
+
+    <RadioGroup
+        android:id="@+id/windowRadioGroup"
+        android:layout_width="96dp"
+        android:layout_height="107dp" >
+
+        <RadioButton
+            android:id="@+id/windowRadioOn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:onClick="windowRadioOnOnClick"
+            android:text="@string/soundRadioButtonOn" android:textColor="@color/colorRed"/>
+
+        <RadioButton
+            android:id="@+id/windowRadioOff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="windowRadioOffOnClick"
+            android:text="@string/soundRadionButtonOff" android:textColor="@color/colorRed"/>
+    </RadioGroup>
+
+    <SeekBar
+        android:id="@+id/windowSeekBarVolume"
+        android:layout_width="212dp"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
