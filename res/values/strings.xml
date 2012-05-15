@@ -13,5 +13,7 @@
     <color name="white">#FFFFFF</color>
     <drawable name="popupWindowCover">#FFFFFF</drawable>
     <color name="colorRed">#780000</color>
+    <string name="buttonFacebook">facebook</string>
+    <string name="buttonLogout">logout</string>
 
 </resources>

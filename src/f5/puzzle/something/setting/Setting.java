@@ -81,20 +81,23 @@ public class Setting extends Activity {
     private SeekBar.OnSeekBarChangeListener settingButton = new SeekBar.OnSeekBarChangeListener(){
     	
     	 //@Override
-    	 public void onStopTrackingTouch(SeekBar arg0) {
+    	 @Override
+		public void onStopTrackingTouch(SeekBar arg0) {
     		 // TODO Auto-generated method stub
     		 System.out.println(arg0.toString());
     	 }
 
     	 //@Override
-    	 public void onStartTrackingTouch(SeekBar arg0) {
+    	 @Override
+		public void onStartTrackingTouch(SeekBar arg0) {
     	  // TODO Auto-generated method stub
     		 System.out.println(arg0.toString());
 
     	 }
 
     	 //@Override
-    	 public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
+    	 @Override
+		public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
     	  // TODO Auto-generated method stub
     		 System.out.println(arg0.toString());
     		 audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, arg1, 0);

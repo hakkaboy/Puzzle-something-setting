@@ -21,4 +21,7 @@
         <activity android:name=".Setting" android:label="@string/app_name"></activity>
     </application>
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    
+    
 </manifest>

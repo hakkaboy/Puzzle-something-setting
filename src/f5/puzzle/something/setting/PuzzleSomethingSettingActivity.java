@@ -1,7 +1,12 @@
 package f5.puzzle.something.setting;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.MalformedURLException;
+
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -11,7 +16,19 @@ import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.SeekBar;
 
+import com.facebook.android.AsyncFacebookRunner;
+import com.facebook.android.AsyncFacebookRunner.RequestListener;
+import com.facebook.android.DialogError;
+import com.facebook.android.Facebook;
+import com.facebook.android.Facebook.DialogListener;
+import com.facebook.android.FacebookError;
+
 public class PuzzleSomethingSettingActivity extends Activity {
+	
+	
+	Facebook facebook = new Facebook("166331713495110");
+	AsyncFacebookRunner mAsyncRunner = new AsyncFacebookRunner(facebook);
+	
 	
 	//Media player
 	MediaPlayer mp;
@@ -35,9 +52,65 @@ public class PuzzleSomethingSettingActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 		mediaPlayFunc(); // play the media
-		defaultSetting();		
+		defaultSetting();
 	}
 	
+	
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        System.out.println("data" + data.toString());
+        facebook.authorizeCallback(requestCode, resultCode, data);
+    }	
+	
+	/**** facebook single sign on button *****/
+    public void facebookOnClick(View view){
+
+		//facebook relatives
+        facebook.authorize(this, new DialogListener() {
+            @Override
+            public void onComplete(Bundle values) {
+            	System.out.println("values: " + values.toString());           	
+            }
+
+            @Override
+            public void onFacebookError(FacebookError error) {}
+
+            @Override
+            public void onError(DialogError e) {}
+
+            @Override
+            public void onCancel() {}
+        });		
+		  
+    	
+    }
+    
+    
+    /**** facebook logout button *****/
+    public void logoutOnClick(View view){
+
+    	mAsyncRunner.logout(this, new RequestListener() {
+    		  @Override
+    		  public void onComplete(String response, Object state) {}
+    		  
+    		  @Override
+    		  public void onIOException(IOException e, Object state) {}
+    		  
+    		  @Override
+    		  public void onFileNotFoundException(FileNotFoundException e,
+    		        Object state) {}
+    		  
+    		  @Override
+    		  public void onMalformedURLException(MalformedURLException e,
+    		        Object state) {}
+    		  
+    		  @Override
+    		  public void onFacebookError(FacebookError e, Object state) {}
+    		});    	
+    	
+    	
+    }
 	
 	/****** Find the relative views and configure some default setting ******/
 	public void defaultSetting() {
@@ -68,16 +141,19 @@ public class PuzzleSomethingSettingActivity extends Activity {
 		seekbar2.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
 			// @Override
+			@Override
 			public void onStopTrackingTouch(SeekBar arg0) {
 				// TODO Auto-generated method stub
 			}
 
 			// @Override
+			@Override
 			public void onStartTrackingTouch(SeekBar arg0) {
 				// TODO Auto-generated method stub
 			}
 
 			// @Override
+			@Override
 			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
 				// TODO Auto-generated method stub
 				audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, arg1, 0);
@@ -89,6 +165,7 @@ public class PuzzleSomethingSettingActivity extends Activity {
 		radioOn.setOnClickListener(new RadioButton.OnClickListener(){ 
 			
 			
+			@Override
 			public void onClick(View v){
 				if (pause == true) {
 					pause = false;
@@ -102,6 +179,7 @@ public class PuzzleSomethingSettingActivity extends Activity {
 		radioOff.setOnClickListener(new RadioButton.OnClickListener(){ 
 			
 			
+			@Override
 			public void onClick(View v){
 				if (pause == false) {
 					pause = true;
@@ -117,6 +195,7 @@ public class PuzzleSomethingSettingActivity extends Activity {
 		windowClose.setOnClickListener(new Button.OnClickListener(){ 
 			
 			
+			@Override
 			public void onClick(View v){
 				popupWindow.dismiss();
 			}

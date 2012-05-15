@@ -10,6 +10,13 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.08"
         android:text="@string/puzzleSomethingTitle" />
+
+    <Button
+        android:id="@+id/buttonLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.08"
+        android:text="@string/buttonLogout" android:onClick="logoutOnClick"/>
 
     <Button
         android:id="@+id/settingButton"
@@ -17,5 +24,12 @@
         android:layout_height="wrap_content"
         android:onClick="settingOnClick"
         android:text="@string/settingButton" />
+
+    <Button
+        android:id="@+id/buttonFacebook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.08"
+        android:text="@string/buttonFacebook" android:onClick="facebookOnClick"/>
 
 </LinearLayout>
